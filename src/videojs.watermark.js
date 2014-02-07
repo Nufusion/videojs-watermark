@@ -4,6 +4,9 @@ console.log('watermark: Start');
   console.log('watermark: Init defaults');
   var defaults = {
         file: 'Owned_Stamp.png',
+        link: 'http://example.com',
+        title: '',
+        padding: '0px',
         xpos: 0,
         ypos: 0,
         xrepeat: 0,
@@ -42,10 +45,15 @@ console.log('watermark: Start');
 
     // create the watermark element
     div = document.createElement('div');
+	  a = document.createElement('a');
+	  div.appendChild(a);
     img = document.createElement('img');
-    div.appendChild(img);
+    a.appendChild(img);
     img.className = 'vjs-watermark';
     img.src = options.file;
+	  img.style.padding = options.padding;
+	  a.href = options.link;
+  	a.title = options.title;
     //img.style.bottom = "0";
     //img.style.right = "0";
     if ((options.ypos == 0) && (options.xpos == 0)) // Top left
